@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBME組委員推薦名單</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: opacity 0.3s;
+        }
+        
+        .back-button:hover {
+            opacity: 0.8;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4facfe;
+            display: inline-block;
+        }
+        
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+        
+        .member-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #4facfe;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .member-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .member-type {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 15px;
+        }
+        
+        .member-info {
+            flex: 1;
+        }
+        
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .member-department {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+        
+        .experience-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-left: auto;
+        }
+        
+        .experience-senior {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+        
+        .experience-mid {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+        
+        .experience-young {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .experience-mid-young {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .experience-none {
+            background: #f5f5f5;
+            color: #616161;
+        }
+        
+        .member-details {
+            margin-top: 15px;
+        }
+        
+        .detail-section {
+            margin-bottom: 15px;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .detail-content {
+            color: #555;
+            line-height: 1.5;
+            padding-left: 10px;
+        }
+        
+        .benefit {
+            border-left: 3px solid #27ae60;
+            background: #eafaf1;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        
+        .risk {
+            border-left: 3px solid #e74c3c;
+            background: #fdf2f2;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        
+        .note {
+            border-left: 3px solid #f39c12;
+            background: #fef9e7;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        
+        .current-member {
+            position: relative;
+        }
+        
+        .current-member::before {
+            content: "現任委員";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #27ae60;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        .current-attendee::before {
+            content: "現任列席人員";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        .recommended-member::before {
+            content: "推薦委員";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #9b59b6;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-button {
+                position: static;
+                transform: none;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="#" class="back-button">← 返回討論會議</a>
+            <h1>CBME組委員推薦名單</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">23</span>
+                    <span class="stat-label">推薦委員總數</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">13</span>
+                    <span class="stat-label">醫師委員</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">9</span>
+                    <span class="stat-label">職類委員</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">行政委員</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">醫師委員</h2>
+                <div class="members-grid" id="doctors-grid">
+                    <!-- Doctor members will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">職類委員</h2>
+                <div class="members-grid" id="staff-grid">
+                    <!-- Staff members will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">行政委員</h2>
+                <div class="members-grid" id="admin-grid">
+                    <!-- Admin members will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CBME committee data - 從Excel檔案實際讀取的資料
+        const cbmeData = [
+            {
+                "類別": "醫師",
+                "科別": "腎臟科",
+                "姓名": "甘偉志主任",
+                "教學經驗世代": "資深",
+                "助益": "大內科、教學經驗豐富、同理心、心思細膩",
+                "風險": "臨床業務繁忙",
+                "備註": "現任委員"
+            },
+            {
+                "類別": "醫師",
+                "科別": "神經內科",
+                "姓名": "楊勝翔醫師",
+                "教學經驗世代": "中",
+                "助益": "待人客氣友善、用心教學",
+                "風險": "容易陷入被動服從任務模式",
+                "備註": ""
+            },
+            {
+                "類別": "醫師",
+                "科別": "神經外科",
+                "姓名": "陳志偉主任",
+                "教學經驗世代": "資深",
+                "助益": "大外科、教學經驗豐富、決策果決",
+                "風險": "臨床業務繁忙、身兼多職",
+                "備註": "現任委員"
+            },
+            {
+                "類別": "醫師",
+                "科別": "神經外科",
+                "姓名": "陳昱廷醫師(R6)",
+                "教學經驗世代": "青",
+                "助益": "有教學熱忱、有想法、潛在接班人",
+                "風險": "需適當誘因強化教學動能，偶有情緒衝突風險",
+                "備註": ""
+            },
+            {
+                "類別": "醫師",
+                "科別": "婦產部",
+                "姓名": "陳怡婷醫師",
+                "教學經驗世代": "青",
+                "助益": "待人客氣友善、教學穩定、潛在教學接班人(可被引導)",
+                "風險": "科內人手缺稀、不確定能否引導成功",
+                "備註": ""
+            },
+            {
+                "類別": "醫師",
+                "科別": "兒科部",
+                "姓名": "周琪部長",
+                "教學經驗世代": "資深",
+                "助益": "教學經驗豐富",
+                "風險": "-",
+                "備註": ""
+            },
+            {
+                "類別": "醫師",
+                "科別": "急診醫學部",
+                "姓名": "陳伯榕醫師",
+                "教學經驗世代": "青",
+                "助益": "年輕有為、熟悉急診教學運作及CBME",
+                "風險": "臨床業務繁忙、身兼多職",
+                "備註": "現任列席人員"
+            },
+            {
+                "類別": "醫師",
+                "科別": "急診醫學部",
+                "姓名": "李季恆醫師",
+                "教學經驗世代": "中青",
+                "助益": "年輕、熟悉急診教學運作",
+                "風險": "需適當誘因強化教學動能",
+                "備註": ""
+            },
+            {
+                "類別": "醫師",
+                "科別": "急診醫學部",
+                "姓名": "王嘉地主任",
+                "教學經驗世代": "資深",
+                "助益": "熟悉急診教學運作CBME、CCC急診行之多年",
+                "風險": "偶有情緒衝突風險",
+                "備註": "現任委員"
+            },
+            {
+                "類別": "醫師",
+                "科別": "家醫部",
+                "姓名": "蔡宜璇醫師",
+                "教學經驗世代": "中",
+                "助益": "邏輯條理清晰、待人和善",
+                "風險": "臨床業務略忙",
+                "備註": ""
+            },
+            {
+                "類別": "醫師",
+                "科別": "麻醉部",
+                "姓名": "鄧宜家醫師",
+                "教學經驗世代": "青",
+                "助益": "待人客氣友善、教學穩定、潛在教學接班人(可被引導)",
+                "風險": "不確定能否引導成功",
+                "備註": ""
+            },
+            {
+                "類別": "醫師",
+                "科別": "牙醫部",
+                "姓名": "陳冠良主任",
+                "教學經驗世代": "資深",
+                "助益": "教學經驗豐富",
+                "風險": "-",
+                "備註": "現任委員"
+            },
+            {
+                "類別": "醫師",
+                "科別": "中醫部",
+                "姓名": "王瑜婷主任",
+                "教學經驗世代": "中",
+                "助益": "教學經驗豐富、待人客氣友善",
+                "風險": "-",
+                "備註": "現任委員"
+            },
+            {
+                "類別": "行政",
+                "科別": "品管中心",
+                "姓名": "郭鈴艷病安管理師",
+                "教學經驗世代": "無",
+                "助益": "待人客氣友善、CBME品管圈員之一",
+                "風險": "-",
+                "備註": ""
+            },
+            {
+                "類別": "職類",
+                "科別": "A醫放",
+                "姓名": "黃建中組長",
+                "教學經驗世代": "中",
+                "助益": "熟悉教學業務、本院最早推展CBME職類、擔任衛福部臨培計畫委員可知政府最新政策",
+                "風險": "急診臨床業務繁忙",
+                "備註": "推薦委員"
+            },
+            {
+                "類別": "職類",
+                "科別": "A醫放",
+                "姓名": "放射PGY",
+                "教學經驗世代": "青",
+                "助益": "醫放CBME發展成熟、加入學員視角",
+                "風險": "臨床業務繁忙時間配合、需多理解教學運作",
+                "備註": ""
+            },
+            {
+                "類別": "職類",
+                "科別": "A藥事",
+                "姓名": "黃淑芬教學型醫事人員",
+                "教學經驗世代": "中",
+                "助益": "熟悉教學業務、就讀成人教育博班中",
+                "風險": "-",
+                "備註": "現任列席人員"
+            },
+            {
+                "類別": "職類",
+                "科別": "A醫檢",
+                "姓名": "林家榛中階醫檢師",
+                "教學經驗世代": "青",
+                "助益": "熟悉教學業務、待人客氣友善",
+                "風險": "-",
+                "備註": ""
+            },
+            {
+                "類別": "職類",
+                "科別": "護理部",
+                "姓名": "護理代表",
+                "教學經驗世代": "中",
+                "助益": "",
+                "風險": "-",
+                "備註": ""
+            },
+            {
+                "類別": "職類",
+                "科別": "B營養",
+                "姓名": "劉美媛主任",
+                "教學經驗世代": "資深",
+                "助益": "熟悉教學業務、參與研議營養全聯會epa教案共識",
+                "風險": "-",
+                "備註": "現任委員"
+            },
+            {
+                "類別": "職類",
+                "科別": "B聽力",
+                "姓名": "洪素珍小組長",
+                "教學經驗世代": "資深",
+                "助益": "熟悉教學業務、參與研議聽力學會epa教案共識",
+                "風險": "職類規模較小",
+                "備註": ""
+            },
+            {
+                "類別": "職類",
+                "科別": "C物治",
+                "姓名": "劉天慧組長",
+                "教學經驗世代": "中",
+                "助益": "熟悉教學業務、參與研議物治全聯會epa教案共識",
+                "風險": "-",
+                "備註": ""
+            },
+            {
+                "類別": "職類",
+                "科別": "C語治",
+                "姓名": "陳璟綺組長",
+                "教學經驗世代": "中",
+                "助益": "熟悉教學業務、待人客氣友善",
+                "風險": "臨床業務繁忙時間配合、職類規模較小",
+                "備註": ""
+            }
+        ];
+
+        function createMemberCard(member) {
+            const isCurrentMember = member.備註.includes('現任委員');
+            const isCurrentAttendee = member.備註.includes('現任列席人員');
+            const isRecommendedMember = member.備註.includes('推薦委員');
+            
+            // 根據教學經驗世代設定顏色類別
+            let experienceClass = '';
+            switch(member.教學經驗世代) {
+                case '資深':
+                    experienceClass = 'experience-senior';
+                    break;
+                case '中':
+                    experienceClass = 'experience-mid';
+                    break;
+                case '青':
+                    experienceClass = 'experience-young';
+                    break;
+                case '中青':
+                    experienceClass = 'experience-mid-young';
+                    break;
+                case '無':
+                    experienceClass = 'experience-none';
+                    break;
+                default:
+                    experienceClass = 'experience-none';
+            }
+            
+            // 決定要顯示的標示類別
+            let badgeClass = '';
+            if (isCurrentMember) {
+                badgeClass = 'current-member';
+            } else if (isCurrentAttendee) {
+                badgeClass = 'current-attendee';
+            } else if (isRecommendedMember) {
+                badgeClass = 'recommended-member';
+            }
+            
+            return `
+                <div class="member-card ${badgeClass}">
+                    <div class="member-header">
+                        <span class="member-type">${member.類別}</span>
+                        <div class="member-info">
+                            <div class="member-name">${member.姓名}</div>
+                            <div class="member-department">${member.科別}</div>
+                        </div>
+                        <div class="experience-badge ${experienceClass}">${member.教學經驗世代}</div>
+                    </div>
+                    
+                    <div class="member-details">
+                        ${member.助益 ? `
+                        <div class="detail-section">
+                            <div class="detail-label">助益</div>
+                            <div class="detail-content benefit">${member.助益}</div>
+                        </div>
+                        ` : ''}
+                        
+                        ${member.風險 && member.風險 !== '-' ? `
+                        <div class="detail-section">
+                            <div class="detail-label">風險</div>
+                            <div class="detail-content risk">${member.風險}</div>
+                        </div>
+                        ` : ''}
+                        
+                        ${member.備註 && !member.備註.includes('現任委員') && !member.備註.includes('現任列席人員') && !member.備註.includes('推薦委員') ? `
+                        <div class="detail-section">
+                            <div class="detail-label">備註</div>
+                            <div class="detail-content note">${member.備註}</div>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function populateMembers() {
+            const doctorsGrid = document.getElementById('doctors-grid');
+            const staffGrid = document.getElementById('staff-grid');
+            const adminGrid = document.getElementById('admin-grid');
+            
+            const doctors = cbmeData.filter(member => member.類別 === '醫師');
+            const staff = cbmeData.filter(member => member.類別 === '職類');
+            const admin = cbmeData.filter(member => member.類別 === '行政');
+            
+            doctorsGrid.innerHTML = doctors.map(createMemberCard).join('');
+            staffGrid.innerHTML = staff.map(createMemberCard).join('');
+            adminGrid.innerHTML = admin.map(createMemberCard).join('');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', populateMembers);
+    </script>
+</body>
+</html>
