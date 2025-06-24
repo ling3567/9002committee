@@ -36,6 +36,24 @@
             color: white;
         }
 
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 1;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
         .header::before {
             content: '';
             position: absolute;
@@ -304,6 +322,7 @@
     
     <div class="container">
         <div class="header">
+            <a href="index.html" class="back-button">← 返回首頁</a>
             <h1>🚀 數位賦能組委員推薦名單</h1>
             <p>Digital Empowerment Committee Recommendation List</p>
         </div>

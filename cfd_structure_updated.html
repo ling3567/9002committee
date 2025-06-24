@@ -35,6 +35,24 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .header h1 {
@@ -274,6 +292,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <a href="index.html" class="back-button">← 返回首頁</a>
             <h1>師資培育</h1>
             <div class="date">114.06.23</div>
         </div>
