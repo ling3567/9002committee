@@ -37,17 +37,20 @@
         
         .back-button {
             position: absolute;
-            left: 30px;
-            top: 50%;
-            transform: translateY(-50%);
+            left: 20px;
+            top: 20px;
             color: white;
             text-decoration: none;
-            font-size: 16px;
-            transition: opacity 0.3s;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 1;
+            transition: background 0.3s;
         }
-        
+
         .back-button:hover {
-            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.3);
         }
         
         .header h1 {
@@ -289,12 +292,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .back-button {
-                position: static;
-                transform: none;
-                display: block;
-                margin-bottom: 20px;
-            }
         }
     </style>
 </head>
