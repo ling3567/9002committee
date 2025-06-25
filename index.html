@@ -174,6 +174,19 @@
             color: white;
         }
 
+        .recommend-card {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+        }
+
+        .recommend-card::before {
+            background: linear-gradient(45deg, #a1c4fd, #c2e9fb);
+        }
+
+        .recommend-card .recommend-title {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            color: white;
+        }
+
         .legend {
             display: flex;
             justify-content: center;
@@ -391,16 +404,16 @@
                 </div>
             </div>
 
-            <!-- 委員異動推薦 -->
-            <div class="group-card">
-                <div class="group-title">委員異動推薦</div>
+            <!-- 委員推薦建議 -->
+            <div class="group-card recommend-card">
+                <div class="group-title recommend-title">委員推薦建議</div>
                 
                 <div class="description">
                     針對現任委員調整、新增或更替等提供建議，包含醫師與職類平衡及委員會運作效能優化等相關事項
                 </div>
                 <div class="button-container">
                     <a href="recommend.html" class="detail-button">
-                        查看委員異動推薦詳情
+                        查看委員推薦建議詳情
                     </a>
                 </div>
             </div>
