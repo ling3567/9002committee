@@ -288,7 +288,8 @@
         
         .explanation-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 30px;
+            max-width: 1400px;
+            margin: 30px auto;
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -304,6 +305,8 @@
         }
         
         .explanation-grid {
+            list-style: none;
+            padding: 0;
             display: flex;
             justify-content: center;
             gap: 30px;
@@ -439,13 +442,13 @@
 
     <div class="explanation-section">
         <h3>異動選項說明</h3>
-        <div class="explanation-grid">
-            <div class="explanation-item"><strong>新任：</strong>新加入之委員</div>
-            <div class="explanation-item"><strong>調任：</strong>原職務調動，不再擔任現有職務，故推派新委員</div>
-            <div class="explanation-item"><strong>轉任：</strong>由原職務(如列席人員)轉為正式委員</div>
-            <div class="explanation-item"><strong>卸任：</strong>原委員卸任職務</div>
-            <div class="explanation-item"><strong>取消列席：</strong>原列席人員因業務調整，不再列席</div>
-        </div>
+        <ul class="explanation-grid">
+            <li class="explanation-item">・<strong>新任：</strong>新加入之委員</li>
+            <li class="explanation-item">・<strong>調任：</strong>原職務調動，不再擔任現有職務，故推派新委員</li>
+            <li class="explanation-item">・<strong>轉任：</strong>由原職務（如列席人員）轉為正式委員</li>
+            <li class="explanation-item">・<strong>卸任：</strong>原委員卸任職務</li>
+            <li class="explanation-item">・<strong>取消列席：</strong>原列席人員因業務調整，不再列席</li>
+        </ul>
     </div>
 
     <script>
