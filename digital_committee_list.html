@@ -48,6 +48,10 @@
             font-size: 0.9rem;
             z-index: 1;
             transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            pointer-events: auto;
+            cursor: pointer;
         }
 
         .back-button:hover {
@@ -63,6 +67,7 @@
             height: 200%;
             background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
             animation: shine 3s infinite;
+            pointer-events: none;
         }
 
         @keyframes shine {
