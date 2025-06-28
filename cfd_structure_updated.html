@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+            font-family: 'Noto Sans TC', 'Roboto', 'Microsoft JhengHei', Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
@@ -178,34 +178,67 @@
         }
 
         .member {
-            color: white;
-            padding: 8px 15px;
-            border-radius: 25px;
+            background: #F7F7FA;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 20px;
             font-weight: 500;
             font-size: 0.95em;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid transparent;
+        }
+
+        .member .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .member-name {
+            font-weight: 700;
+            font-size: 1.05em;
+        }
+
+        .role-tag {
+            font-size: 0.75em;
+            padding: 2px 6px;
+            border-radius: 10px;
+            border: 1px solid;
+            margin-left: 2px;
         }
 
         .member.senior {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
         }
+
+        .member.senior .dot { background: #667eea; }
+        .member.senior .role-tag { color: #667eea; border-color: #667eea; }
 
         .member.middle {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-color: #f5576c;
         }
 
+        .member.middle .dot { background: #f5576c; }
+        .member.middle .role-tag { color: #f5576c; border-color: #f5576c; }
+
         .member.young {
-            background: linear-gradient(135deg, #2196F3 0%, #03A9F4 100%);
-            color: white;
+            border-color: #2196F3;
         }
+
+        .member.young .dot { background: #2196F3; }
+        .member.young .role-tag { color: #2196F3; border-color: #2196F3; }
 
         .member-badge {
             display: inline-block;
             font-size: 0.7em;
             padding: 2px 6px;
             border-radius: 10px;
-            margin-left: 5px;
+            margin-left: 4px;
             font-weight: 600;
+            color: white;
         }
 
         .badge-committee {
@@ -274,9 +307,9 @@
             border-radius: 50%;
         }
 
-        .legend-color.senior { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .legend-color.middle { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .legend-color.young { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .legend-color.senior { background: #667eea; }
+        .legend-color.middle { background: #f5576c; }
+        .legend-color.young { background: #2196F3; }
 
         @media (max-width: 768px) {
             .groups-container {
@@ -335,10 +368,29 @@
                 <div class="section">
                     <div class="section-title">推薦名單</div>
                     <div class="members">
-                        <span class="member middle">郭妍伶主任(中)<span class="member-badge badge-current">現任醫教會委員</span></span>
-                        <span class="member young">陳伯榕醫師(青)<span class="member-badge badge-attend">現任列席人員</span></span>
-                        <span class="member young">嚴世島醫師(青)</span>
-                        <span class="member middle">黃淑芬組長(中)<span class="member-badge badge-attend">現任列席人員</span></span>
+                        <div class="member middle">
+                            <span class="dot"></span>
+                            <span class="member-name">郭妍伶主任</span>
+                            <span class="role-tag">中階委員</span>
+                            <span class="member-badge badge-current">現任醫教會委員</span>
+                        </div>
+                        <div class="member young">
+                            <span class="dot"></span>
+                            <span class="member-name">陳伯榕醫師</span>
+                            <span class="role-tag">青年委員</span>
+                            <span class="member-badge badge-attend">現任列席人員</span>
+                        </div>
+                        <div class="member young">
+                            <span class="dot"></span>
+                            <span class="member-name">嚴世島醫師</span>
+                            <span class="role-tag">青年委員</span>
+                        </div>
+                        <div class="member middle">
+                            <span class="dot"></span>
+                            <span class="member-name">黃淑芬組長</span>
+                            <span class="role-tag">中階委員</span>
+                            <span class="member-badge badge-attend">現任列席人員</span>
+                        </div>
                     </div>
                 </div>
 
@@ -389,10 +441,27 @@
                 <div class="section">
                     <div class="section-title">推薦名單</div>
                     <div class="members">
-                        <span class="member middle">陳志偉主任(中)<span class="member-badge badge-current">現任醫教會委員</span></span>
-                        <span class="member young">黃筠婷醫師(青)</span>
-                        <span class="member senior">徐富美督導(資深)</span>
-                        <span class="member middle">黃建中組長(中)</span>
+                        <div class="member middle">
+                            <span class="dot"></span>
+                            <span class="member-name">陳志偉主任</span>
+                            <span class="role-tag">中階委員</span>
+                            <span class="member-badge badge-current">現任醫教會委員</span>
+                        </div>
+                        <div class="member young">
+                            <span class="dot"></span>
+                            <span class="member-name">黃筠婷醫師</span>
+                            <span class="role-tag">青年委員</span>
+                        </div>
+                        <div class="member senior">
+                            <span class="dot"></span>
+                            <span class="member-name">徐富美督導</span>
+                            <span class="role-tag">資深委員</span>
+                        </div>
+                        <div class="member middle">
+                            <span class="dot"></span>
+                            <span class="member-name">黃建中組長</span>
+                            <span class="role-tag">中階委員</span>
+                        </div>
                     </div>
                 </div>
 
@@ -442,10 +511,28 @@
                 <div class="section">
                     <div class="section-title">推薦名單</div>
                     <div class="members">
-                        <span class="member middle">陳鋭溢醫師(中)<span class="member-badge badge-attend">現任列席人員</span></span>
-                        <span class="member young">黃博裕醫師(R4)(青)</span>
-                        <span class="member middle">邱旅揚教學型醫事人員(中)<span class="member-badge badge-attend">現任列席人員</span></span>
-                        <span class="member young">傅柏憲藥師(青)</span>
+                        <div class="member middle">
+                            <span class="dot"></span>
+                            <span class="member-name">陳鋭溢醫師</span>
+                            <span class="role-tag">中階委員</span>
+                            <span class="member-badge badge-attend">現任列席人員</span>
+                        </div>
+                        <div class="member young">
+                            <span class="dot"></span>
+                            <span class="member-name">黃博裕醫師(R4)</span>
+                            <span class="role-tag">青年委員</span>
+                        </div>
+                        <div class="member middle">
+                            <span class="dot"></span>
+                            <span class="member-name">邱旅揚教學型醫事人員</span>
+                            <span class="role-tag">中階委員</span>
+                            <span class="member-badge badge-attend">現任列席人員</span>
+                        </div>
+                        <div class="member young">
+                            <span class="dot"></span>
+                            <span class="member-name">傅柏憲藥師</span>
+                            <span class="role-tag">青年委員</span>
+                        </div>
                     </div>
                 </div>
 
@@ -496,9 +583,23 @@
                 <div class="section">
                     <div class="section-title">推薦名單</div>
                     <div class="members">
-                        <span class="member senior">褚錦承副部長(資深)<span class="member-badge badge-current">現任醫教會委員</span></span>
-                        <span class="member middle">劉祐彰醫師(中)</span>
-                        <span class="member middle">張鈴艷總技師(中)<span class="member-badge badge-attend">現任列席人員</span></span>
+                        <div class="member senior">
+                            <span class="dot"></span>
+                            <span class="member-name">褚錦承副部長</span>
+                            <span class="role-tag">資深委員</span>
+                            <span class="member-badge badge-current">現任醫教會委員</span>
+                        </div>
+                        <div class="member middle">
+                            <span class="dot"></span>
+                            <span class="member-name">劉祐彰醫師</span>
+                            <span class="role-tag">中階委員</span>
+                        </div>
+                        <div class="member middle">
+                            <span class="dot"></span>
+                            <span class="member-name">張鈴艷總技師</span>
+                            <span class="role-tag">中階委員</span>
+                            <span class="member-badge badge-attend">現任列席人員</span>
+                        </div>
                     </div>
                 </div>
 
@@ -549,9 +650,22 @@
                 <div class="section">
                     <div class="section-title">推薦名單</div>
                     <div class="members">
-                        <span class="member middle">楊清傑醫師(中)<span class="member-badge badge-committee">醫教會委員推薦</span></span>
-                        <span class="member young">莊閔翔醫師(研究員)(青)</span>
-                        <span class="member young">吳政彥營養師(青)</span>
+                        <div class="member middle">
+                            <span class="dot"></span>
+                            <span class="member-name">楊清傑醫師</span>
+                            <span class="role-tag">中階委員</span>
+                            <span class="member-badge badge-committee">醫教會委員推薦</span>
+                        </div>
+                        <div class="member young">
+                            <span class="dot"></span>
+                            <span class="member-name">莊閔翔醫師(研究員)</span>
+                            <span class="role-tag">青年委員</span>
+                        </div>
+                        <div class="member young">
+                            <span class="dot"></span>
+                            <span class="member-name">吳政彥營養師</span>
+                            <span class="role-tag">青年委員</span>
+                        </div>
                     </div>
                 </div>
 
